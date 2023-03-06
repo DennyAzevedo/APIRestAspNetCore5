@@ -27,12 +27,23 @@ namespace RestWithASPNET.Controllers
 			return BadRequest("Invalid Input");
 		}
 
-		private decimal ConvetToDecimal(string number) {
-			throw new NotImplementedException();
+		private bool IsNumeric(string strNumber) {
+			double number;
+			bool isNumber =  double.TryParse(
+				strNumber, 
+				System.Globalization.NumberStyles.Any, 
+				System.Globalization.NumberFormatInfo.InvariantInfo,
+				out number
+			);
+			return isNumber;
 		}
-
-		private bool IsNumeric(string number) {
-			throw new NotImplementedException();
+		
+		private decimal ConvetToDecimal(string strNumber) {
+			decimal decimalValue;
+			if (decimal.TryParse(strNumber, out decimalValue)) {
+				return decimalValue;
+			}
+			return 0;
 		}
 	}
 }
