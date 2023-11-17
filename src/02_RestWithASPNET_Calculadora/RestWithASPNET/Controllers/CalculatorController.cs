@@ -19,10 +19,55 @@ namespace RestWithASPNET.Controllers
         }
 
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
-        public IActionResult Get(string firstNumber, string secondNumber) {
+        public IActionResult Sum(string firstNumber, string secondNumber) {
 			if (IsNumeric(firstNumber) && IsNumeric(secondNumber)) {
 				var sum = ConvetToDecimal(firstNumber) + ConvetToDecimal(secondNumber);
 				return Ok(sum.ToString());
+			}
+			return BadRequest("Invalid Input");
+		}
+
+		[HttpGet("sub/{firstNumber}/{secondNumber}")]
+		public IActionResult Sub(string firstNumber, string secondNumber) {
+			if (IsNumeric(firstNumber) && IsNumeric(secondNumber)) {
+				var minus = ConvetToDecimal(firstNumber) - ConvetToDecimal(secondNumber);
+				return Ok(minus.ToString());
+			}
+			return BadRequest("Invalid Input");
+		}
+
+		[HttpGet("mult/{firstNumber}/{secondNumber}")]
+		public IActionResult Mult(string firstNumber, string secondNumber) {
+			if (IsNumeric(firstNumber) && IsNumeric(secondNumber)) {
+				var mult = ConvetToDecimal(firstNumber) * ConvetToDecimal(secondNumber);
+				return Ok(mult.ToString());
+			}
+			return BadRequest("Invalid Input");
+		}
+
+		[HttpGet("div/{firstNumber}/{secondNumber}")]
+		public IActionResult Div(string firstNumber, string secondNumber) {
+			if (IsNumeric(firstNumber) && IsNumeric(secondNumber)) {
+				var div = ConvetToDecimal(firstNumber) / ConvetToDecimal(secondNumber);
+				return Ok(div.ToString());
+			}
+			return BadRequest("Invalid Input");
+		}
+
+		[HttpGet("mean/{firstNumber}/{secondNumber}")]
+		public IActionResult Mean(string firstNumber, string secondNumber) {
+			if (IsNumeric(firstNumber) && IsNumeric(secondNumber)) {
+				var mean = (ConvetToDecimal(firstNumber) + ConvetToDecimal(secondNumber))/2;
+				return Ok(mean.ToString());
+			}
+			return BadRequest("Invalid Input");
+		}
+
+		[HttpGet("squa/{firstNumber}")]
+		public IActionResult Squa(string firstNumber, string secondNumber) {
+			if (IsNumeric(firstNumber)) {
+				var squa = Math.Sqrt((double)ConvetToDecimal(firstNumber));
+				return Ok(squa.ToString());
 			}
 			return BadRequest("Invalid Input");
 		}
