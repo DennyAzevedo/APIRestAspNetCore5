@@ -75,17 +75,19 @@ namespace RestWithASPNET.Controllers
 		private bool IsNumeric(string strNumber) {
 			double number;
 			bool isNumber =  double.TryParse(
-				strNumber, 
-				System.Globalization.NumberStyles.Any, 
+				strNumber,
+				System.Globalization.NumberStyles.Any,
 				System.Globalization.NumberFormatInfo.InvariantInfo,
 				out number
 			);
 			return isNumber;
 		}
-		
-		private decimal ConvetToDecimal(string strNumber) {
+
+		private decimal ConvetToDecimal(string strNumber)
+		{
 			decimal decimalValue;
-			if (decimal.TryParse(strNumber, out decimalValue)) {
+			if (decimal.TryParse(strNumber, out decimalValue))
+			{
 				return decimalValue;
 			}
 			return 0;
